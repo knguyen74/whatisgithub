@@ -1,5 +1,7 @@
 import java.util.*;
+// it addes 2 matrices together
 public class matrixAddition {	
+
 	public static void main(String[] args){
 		
 		int n = 0;
