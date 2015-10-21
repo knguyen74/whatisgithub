@@ -1,0 +1,58 @@
+import java.util.*;
+public class matrixAddition {	
+	public static void main(String[] args){
+		
+		int n = 0;
+		Scanner sc = new Scanner(System.in); //Creates Scanner
+		boolean repeat = true;
+		
+		while (repeat == true){ //Continues until user says no and repeat is set to false
+			
+			System.out.println("Please input dimensions of your matrices...");
+			n = sc.nextInt(); //Takes in int from user to set dimensions
+			
+			while(n >= 30){ //Checks to see if int is 30 or greater
+				System.out.println("Input must be less that 30, input another number...");
+				n = sc.nextInt(); //If it is 30 or greater then it will ask for another int
+			}
+			
+			int [][] mA = new int [n][n]; //Creates matrix
+			int [][] mB = new int [n][n];
+			int [][] mC = new int [n][n];
+			for(int r = 0; r < n; r++){ //Goes through each row
+				for(int c = 0; c < n; c++){ //Goes through each column
+					mA[r][c] = (int)(Math.random()*10)+1; //Generates random number from 1-10
+					mB[r][c] = (int)(Math.random()*10+1); //Generates random number 1-10
+					mC[r][c] = mA[r][c] + mB[r][c]; //Adds mA and mB to create value in mC
+				}
+			}
+			
+			System.out.println("\nMatrix A");
+			mPrint(n,mA); //Calls mPrint method
+			System.out.println("\nMatrix B");
+			mPrint(n, mB); //Calls mPrint method
+			System.out.println("\nMatrix C (Sum of A and B)");
+			mPrint(n,mC); //Calls mPrint method
+			
+			//Ask users if they would like to repeat
+			System.out.println("\n" + "Would you like to repeat this program? (yes/no)");
+			Scanner an = new Scanner(System.in);
+			String Answer = an.nextLine(); //Takes in next line from user
+			if(Answer.equalsIgnoreCase("yes")){ //Checks to see if input is "yes" and ignores case
+				System.out.println("");
+				repeat = true; //Sets repeat to true and loops to beginning and asks for  dimensions
+			}else{ //If input is anything put "yes", the else will execute
+				System.out.println("\n"+"Thank you and have a ncie day!");
+				repeat = false;  //Sets repeats and will not loop back to ask for dimensions.
+			}
+		}	
+	}
+	public static void mPrint(int n, int[][] m){ //takes in matrix dimension and a matrix
+		for(int r = 0; r < n; r++){ //Goes through each row
+			for(int c = 0; c < n; c++){ //Goes through each column
+				System.out.print(m[r][c] + "\t"); //Prints value at position
+			}
+			System.out.println("");
+		}
+	}
+}
